@@ -2,40 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Days Together</title>
+
   <style>
-    body{
-      font-family: system-ui, -apple-system, Arial;
-      margin:0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      background:#f2f4f7;
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, Arial, sans-serif;
     }
-    .card{
-      background:white;
-      padding:40px;
-      border-radius:25px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 320px;
     }
-    .days{
-      font-size:90px;
-      font-weight:bold;
+
+    .days {
+      font-size: 90px;
+      font-weight: bold;
+      line-height: 1;
     }
-    .label{
-      font-size:22px;
-      color:#666;
-      margin-top:10px;
+
+    .label {
+      font-size: 22px;
+      color: #666;
+      margin-top: 10px;
     }
-    .since{
-      margin-top:15px;
-      color:#999;
+
+    .since {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #999;
     }
   </style>
 </head>
+
 <body>
 
 <div class="card">
@@ -45,25 +54,33 @@
 </div>
 
 <script>
-  // ⭐ 在這裡改你的紀念日
-const startDate = new Date(2026, 0, 17);
+  // ⭐ 改這裡：你的紀念日（年, 月-1, 日）
+  const startDate = new Date(2026, 0, 17); // 0 = 1月
 
-const today = new Date();
-const current = new Date(
-  today.getFullYear(),
-  today.getMonth(),
-  today.getDate()
-);
+  const today = new Date();
+  const current = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
 
-const diff = current - startDate;
-let days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+  const diff = current - startDate;
 
-if (days < 1) days = 0;
+  // +1 版本（當天算第一天）
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
 
-document.getElementById("days").innerText = days;
+  if (days < 1) days = 0;
+
+  document.getElementById("days").innerText = days;
+
+  // 顯示起始日期
+  const year = startDate.getFullYear();
+  const month = String(startDate.getMonth() + 1).padStart(2, "0");
+  const day = String(startDate.getDate()).padStart(2, "0");
+
+  document.getElementById("since").innerText =
+    "Since " + year + "-" + month + "-" + day;
 </script>
 
 </body>
-
 </html>
-

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Days Together</title>
+  <style>
+    body{
+      font-family: system-ui, -apple-system, Arial;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#f2f4f7;
+    }
+    .card{
+      background:white;
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    }
+    .days{
+      font-size:90px;
+      font-weight:bold;
+    }
+    .label{
+      font-size:22px;
+      color:#666;
+      margin-top:10px;
+    }
+    .since{
+      margin-top:15px;
+      color:#999;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="days" id="days"></div>
+  <div class="label">Days Together</div>
+  <div class="since" id="since"></div>
+</div>
+
+<script>
+  // ⭐ 在這裡改你的紀念日
+  const startDate = new Date("2026-01-17T00:00:00");
+
+  const today = new Date();
+  const current = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+  const diff = current - startDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  document.getElementById("days").innerText = days >= 0 ? days : 0;
+  document.getElementById("since").innerText =
+    "Since " + startDate.toISOString().split("T")[0];
+</script>
+
+</body>
+</html>

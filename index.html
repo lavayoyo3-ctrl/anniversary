@@ -52,7 +52,7 @@
   const current = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
   const diff = current - startDate;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24))+1;
 
   document.getElementById("days").innerText = days >= 0 ? days : 0;
   document.getElementById("since").innerText =
@@ -60,4 +60,5 @@
 </script>
 
 </body>
+
 </html>
